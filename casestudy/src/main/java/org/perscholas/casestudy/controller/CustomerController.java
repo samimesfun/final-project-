@@ -117,6 +117,7 @@ public class CustomerController {
             log.info("############ In create customer submit - has errors #########");
             ModelAndView response = new ModelAndView("customer/create");
 
+           // loop over the errors in the form
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info("error: " + error.getDefaultMessage());
             }

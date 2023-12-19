@@ -36,7 +36,7 @@ public class CustomerService {
         customer.setLastName(form.getLastName());
         customer.setPhone(form.getPhone());
         customer.setCity(form.getCity());
-      //  customer.setImageUrl(form.getImageUrl());
+        customer.setImageUrl(form.getImageUrl());
 
         return customerDAO.save(customer);
     }
