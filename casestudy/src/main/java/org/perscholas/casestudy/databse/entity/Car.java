@@ -14,8 +14,8 @@ public class Car {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "manufacture")
-    private String manufacture;
+    @Column(name = "category")
+    private String category;
 
     @Column(name = "model")
     private String model;
@@ -29,6 +29,4 @@ public class Car {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(name = "category")
-    private String category;
 }
