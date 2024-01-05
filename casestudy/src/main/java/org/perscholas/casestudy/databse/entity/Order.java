@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,8 +18,7 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "user_id")
-    private Integer userId;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -26,5 +27,17 @@ public class Order {
     @Column(name = "status")
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderDetail> orderDetails;
+
+    // Constructor to initialize the orderDetails list
+    public Order() {
+        this.createDate = new Date(); // or use the current timestamp based on your requirements
+        this.orderDetails = new ArrayList<>();
+    }
 
 }
