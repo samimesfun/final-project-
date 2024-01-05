@@ -15,14 +15,17 @@ public class OrderDetail {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "order_id")
-    private Integer orderId;
-
-    @Column(name = "car_id")
-    private Integer carId;
 
     @Column(name = "quantity")
     private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 
 
 
