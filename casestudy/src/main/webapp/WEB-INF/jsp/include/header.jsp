@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>AWESOME CAR DEALER</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+
 
     <link href="/pub/css/global-style.css" rel="stylesheet">
 
@@ -16,19 +19,27 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-success bg-info">
+<nav class="navbar navbar-expand-lg text-center ">
     <div class="container-fluid " >
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                 <sec:authorize access="hasAnyAuthority('ADMIN')">
                     <a class="nav-link" href="/customer/create">Create Customer</a>
                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="/car/create">Create Car</a>
+                  </li>
+                    </sec:authorize>
                 <li class="nav-item">
                     <a class="nav-link" href="/customer/search">Search Customer</a>
+                </li>
+                <li class="nav-item">
+                     <a class="nav-link" href="/car/search">Search Car</a>
                 </li>
                 <sec:authorize access="!isAuthenticated()">
                     <li class="nav-item">
@@ -55,6 +66,7 @@
                     <a class="nav-link" href="/admin/index">Secured Request</a>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>
