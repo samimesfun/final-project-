@@ -11,8 +11,12 @@ public interface CarDAO extends JpaRepository<Car, Long> {
 
     public Car findById(Integer id);
 
+    @Query("SELECT c FROM Car c WHERE LOWER(c.category) = LOWER(:category)")
+    List<Car> findByCategoryIgnoreCase(@Param("category") String category);
+
+
     @Query("SELECT c FROM Car c WHERE LOWER(c.model) LIKE LOWER(CONCAT('%', :model, '%')) OR LOWER(c.category) LIKE LOWER(CONCAT('%', :category, '%'))")
     List<Car> findByModelOrCategory(@Param("model") String model, @Param("category") String category);
 
-
+    List<Car> findAll();
 }

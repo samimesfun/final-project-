@@ -9,11 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class CarService {
+    private final CarDAO carDAO;
+
     @Autowired
-    private CarDAO carDAO;
+    public CarService(CarDAO carDAO) {
+        this.carDAO = carDAO;
+    }
+
 
     public Car createCar(CreateCarFormBean form) {
         log.debug("id:" + form.getId());
@@ -43,5 +50,22 @@ public class CarService {
 
 
         return carDAO.save(car);
+    }
+
+
+    public List<Car> getAllCars() {
+        return carDAO.findAll();
+    }
+
+    public List<Car> getCarsByCategory(String category) {
+        return carDAO.findByCategoryIgnoreCase(category);
+    }
+
+    public Car findById(Long carId) {
+        return carDAO.findById(carId).orElse(null);
+    }
+
+    public void deleteCar(Long carId) {
+        carDAO.deleteById(carId);
     }
 }
