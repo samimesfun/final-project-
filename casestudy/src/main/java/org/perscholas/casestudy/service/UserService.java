@@ -6,8 +6,11 @@ import org.perscholas.casestudy.databse.dao.UserDAO;
 import org.perscholas.casestudy.databse.entity.User;
 import org.perscholas.casestudy.formbean.RegisterUserFormBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -30,4 +33,19 @@ public class UserService {
 
         return userDao.save(user);
     }
+    public User findById(Long userId) {
+        return userDao.findById(userId).orElse(null);
+    }
+    public List<User> getAllUsers() {
+        return userDao.findAll();
+    }
+
+    public User findByEmail(String email) throws UsernameNotFoundException {
+        User user = userDao.findByEmailIgnoreCase(email);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with email: " + email);
+        }
+        return user;
+    }
+
 }
