@@ -18,6 +18,7 @@ public class CarService {
 
     @Autowired
     public CarService(CarDAO carDAO) {
+
         this.carDAO = carDAO;
     }
 
@@ -54,18 +55,9 @@ public class CarService {
 
 
     public List<Car> getAllCars() {
+
         return carDAO.findAll();
     }
 
-    public List<Car> getCarsByCategory(String category) {
-        return carDAO.findByCategoryIgnoreCase(category);
-    }
 
-    public Car findById(Long carId) {
-        return carDAO.findById(carId).orElse(null);
-    }
-
-    public void deleteCar(Long carId) {
-        carDAO.deleteById(carId);
-    }
 }

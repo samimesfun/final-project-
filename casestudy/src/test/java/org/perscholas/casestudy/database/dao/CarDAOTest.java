@@ -36,33 +36,33 @@ public class CarDAOTest {
     @Test
     @Order(2)
     public void findByModelOrCategoryTest() {
-        // Create a test car with the specified model and category
-        Car testCar = new Car();
-        testCar.setCategory("Test Category 123");
-        testCar.setModel("Test Model");
-        testCar.setYear(2023);
-        testCar.setPrice(30000.0);
-        testCar.setImageUrl("image url");
-        carDAO.save(testCar);
+        String category = "Test Category 123";
+        List<Car>  cars =carDAO.findByModelOrCategory(null,category);
+        Assertions.assertEquals(1, cars.size());
 
-        // Query the database using findByModelOrCategory
-        List<Car> cars = carDAO.findByModelOrCategory("Test Model", "Test Category");
+        Car car = cars.get(0);
 
-        System.out.println("Found " + cars.size() + " cars with the specified model or category:");
+        Assertions.assertNotNull(car.getId(), "Car ID should not be null");
+        Assertions.assertEquals("Test Category 123", car.getCategory(), "Category mismatch");
+        Assertions.assertEquals("Test Model", car.getModel(), "Model mismatch");
+        Assertions.assertEquals(2023, car.getYear(), "Year mismatch");
+        Assertions.assertEquals(30000.0, car.getPrice(), "Price mismatch");
+        Assertions.assertEquals("image url", car.getImageUrl(), "Image URL mismatch");
 
-        for (Car retrievedCar : cars) {
-            System.out.println("Car: " + retrievedCar);
-        }
-
-        Assertions.assertEquals(14, cars.size(), "Expected 1 car with the specified model or category, but got " + cars.size());
-
-        Car retrievedCar = cars.get(0);
-
-        Assertions.assertTrue(retrievedCar.getModel().toLowerCase().contains("test model"), "Model mismatch");
-        Assertions.assertTrue(retrievedCar.getCategory().toLowerCase().contains("test category"), "Category mismatch");
-        // ... additional assertions for other fields
-
-        // Log information for debugging
-        System.out.println("Found Car: " + retrievedCar);
     }
+    @Test
+    @Order(3)
+    public void deleteCategory(){
+
+       List<Car>  car =carDAO.findByModelOrCategory("Test Model", "Test Category 123");
+
+       Assertions.assertNotNull(car,"category should not be null");
+
+       String category = "Test Category 123";
+
+       int deleted = carDAO.deleteByCategory(category);
+
+       Assertions.assertEquals(1, deleted);
+    }
+
 }
