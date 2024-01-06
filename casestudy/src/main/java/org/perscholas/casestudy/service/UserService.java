@@ -33,10 +33,9 @@ public class UserService {
 
         return userDao.save(user);
     }
-    public User findById(Long userId) {
-        return userDao.findById(userId).orElse(null);
-    }
+
     public List<User> getAllUsers() {
+
         return userDao.findAll();
     }
 
