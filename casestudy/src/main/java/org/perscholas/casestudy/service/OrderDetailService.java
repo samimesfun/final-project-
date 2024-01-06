@@ -17,10 +17,6 @@ public class OrderDetailService {
     @Autowired
     private OrderDetailDAO orderDetailDAO;
 
-    public List<OrderDetail> getOrderDetailsByOrderId(Integer orderId) {
-        return orderDetailDAO.getOrderDetailsByOrderId(orderId);
-    }
-
     public OrderDetail saveOrderDetail(OrderDetail orderDetail) {
 
         return orderDetailDAO.save(orderDetail);
