@@ -66,7 +66,7 @@ public class CartController {
         } else {
             orderDetail = new OrderDetail();
             orderDetail.setOrder(cartOrder);
-            orderDetail.setCar(carDAO.getById(carId)); // Adjust this based on your CarDAO implementation
+            orderDetail.setCar(carDAO.getById(carId));
             orderDetail.setQuantity(1);
             orderDetailService.saveOrderDetail(orderDetail);
         }
