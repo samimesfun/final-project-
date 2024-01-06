@@ -23,10 +23,10 @@
               AWESOME CAR DEALER
             </h6>
             <p>
-              Here you can use rows and columns to organize your footer
-              content. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit.
+                Welcome to AWESOME CAR DEALER! Explore our wide range of top-quality cars.
+                We provide a seamless car buying experience with exceptional customer service.
             </p>
+
           </div>
           <!-- Grid column -->
 

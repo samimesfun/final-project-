@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha384-xzvREUJp8waJkj66B1QlAv2sM8cc5pRYHzAwR7H3fnzBYKgn0RRqFIJ5cRbz5Z9T" crossorigin="anonymous">
 
     <link href="/pub/css/global-style.css" rel="stylesheet">
 
@@ -27,17 +28,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                 <sec:authorize access="hasAnyAuthority('ADMIN')">
-                    <a class="nav-link" href="/customer/create">Create Customer</a>
-                </li>
+                <sec:authorize access="hasAnyAuthority('ADMIN')">
                  <li class="nav-item">
                    <a class="nav-link" href="/car/create">Create Car</a>
                   </li>
-                    </sec:authorize>
-                <li class="nav-item">
-                    <a class="nav-link" href="/customer/search">Search Customer</a>
-                </li>
+                 </sec:authorize>
                 <li class="nav-item">
                      <a class="nav-link" href="/car/search">Search Car</a>
                 </li>
@@ -61,7 +56,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href=""><sec:authentication property="principal.username" /></a>
                     </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="/order/viewCart">
+                           <i class="fas fa-shopping-cart"></i>Cart
+                       </a>
+                   </li>
+
                 </sec:authorize>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/index">Secured Request</a>
                 </li>
