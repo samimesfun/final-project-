@@ -20,7 +20,7 @@ public interface CarDAO extends JpaRepository<Car, Long> {
     @Query("SELECT c FROM Car c WHERE LOWER(c.model) LIKE LOWER(CONCAT('%', :model, '%')) OR LOWER(c.category) LIKE LOWER(CONCAT('%', :category, '%'))")
     List<Car> findByModelOrCategory(@Param("model") String model, @Param("category") String category);
 
-    List<Car> findAll();
+//    List<Car> findAll();
 
     @Modifying
     @Transactional

@@ -29,7 +29,7 @@
                 </c:if>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="${car.imageUrl}" class="card-img-top" alt="Car Image" style="max-height: 200px;">
+                        <img src="${car.imageUrl}" class="card-img-top" alt="Car Image" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title">Model: ${car.model}</h5>
                             <p class="card-text">
