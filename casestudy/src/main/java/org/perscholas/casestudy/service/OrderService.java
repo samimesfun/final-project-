@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -55,5 +56,34 @@ public class OrderService {
         return cartOrder; // Return the created cart order
     }
 
+    @Transactional
+    public String checkout() {
+        Integer userId = authenticatedUserService.loadCurrentUser().getId();
+        Order order = orderDAO.findCurrentOrder(userId, "Cart");
+
+        if (order != null) {
+            order.setStatus("On Hold");
+            orderDAO.save(order);
+            return "Order placed successfully!";
+        }
+
+        return "No items in the cart to place an order!";
+    }
+
+
+    public Double calculateTotalOrderPrice(Order order) {
+        double totalOrderPrice = 0.0;
+
+        if (order != null && order.getOrderDetails() != null) {
+            for (OrderDetail orderDetail : order.getOrderDetails()) {
+                double productPrice = orderDetail.getCar().getPrice();
+                int quantity = orderDetail.getQuantity();
+                double subtotal = productPrice * quantity;
+                totalOrderPrice += subtotal;
+            }
+        }
+
+        return totalOrderPrice;
+    }
 
 }

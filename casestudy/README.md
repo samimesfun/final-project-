@@ -1,5 +1,5 @@
 # final-project-
-# The Cars - Car Management System
+#  Cars online Shopping System
 
 The Cars is a web application developed using HTML, CSS, JavaScript, Bootstrap, Java, Spring Boot, Spring Security, MySQL, and Maven. It enables users to manage their car collection, perform CRUD operations on cars, upload car images, and utilize a shopping cart feature. Users can also create accounts, log in, and log out.
 ## Home Page

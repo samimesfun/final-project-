@@ -14,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -91,11 +93,34 @@ public class CartController {
         // If there is a cart order, get the associated car products directly from DAO
         List<OrderDetail> carProducts = orderDetailDAO.findCarProductsByOrderId(cartOrder.getId());
 
+        // Calculate the total order price
+        Double totalOrderPrice = orderService.calculateTotalOrderPrice(cartOrder);
 
         ModelAndView modelAndView = new ModelAndView("order/viewCart");
         modelAndView.addObject("cartOrder", cartOrder);
         modelAndView.addObject("carProducts", carProducts);
+        modelAndView.addObject("totalOrderPrice", totalOrderPrice);
 
         return modelAndView;
     }
+    @PostMapping("/order/checkout")
+    public ModelAndView checkout() {
+        String successMessage = orderService.checkout();
+
+        ModelAndView modelAndView = new ModelAndView("order/orderPlacedSuccessfully");
+        modelAndView.addObject("success", successMessage);
+
+        return modelAndView;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
