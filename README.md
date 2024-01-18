@@ -3,7 +3,7 @@
 
 The Cars is a web application developed using HTML, CSS, JavaScript, Bootstrap, Java, Spring Boot, Spring Security, MySQL, and Maven. It enables users to manage their car collection, perform CRUD operations on cars, upload car images, and utilize a shopping cart feature. Users can also create accounts, log in, and log out.
 ## Home Page
-![home page .png](src%2Fmain%2Fwebapp%2Fpub%2Fimages%2Fhome%20page%20.png)
+"C:\Users\eden\sami\development\case-study\casestudy\src\main\webapp\pub\images\home page .png"
 ## view cart page 
 ![img.png](img.png)
 ## Features
